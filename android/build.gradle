@@ -1,40 +1,25 @@
-group 'com.example.bs_flutter_utils'
-version '1.0-SNAPSHOT'
+// android/build.gradle (bs_flutter_utils)
 
-buildscript {
-    ext.kotlin_version = '1.8.22'
-    repositories {
-        google()
-        jcenter()
-    }
-
-    dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
+plugins {
+  id 'com.android.library'
+  id 'org.jetbrains.kotlin.android'
 }
-
-rootProject.allprojects {
-    repositories {
-        google()
-        jcenter()
-    }
-}
-
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 30
+  namespace 'com.bsflutter.utils'      // ← choose a stable, unique value
+  compileSdkVersion 34
 
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
-    defaultConfig {
-        minSdkVersion 16
-    }
+  defaultConfig {
+    minSdkVersion 21
+  }
+
+  sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+  }
 }
 
+// No buildscript{}, no repositories{}, no jcenter(), no AGP/Kotlin classpaths here.
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+  // Leave empty unless your library explicitly needs extra libs.
+  // (Do NOT add kotlin-stdlib here; the Kotlin Android plugin provides it.)
 }

@@ -13,10 +13,26 @@ android {
     minSdkVersion 21
   }
 
+  // Make Java compile to 17
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_17
+    targetCompatibility JavaVersion.VERSION_17
+  }
+
   sourceSets {
     main.java.srcDirs += 'src/main/kotlin'
   }
 }
+
+kotlin {
+  jvmToolchain(17)
+}
+
+repositories {
+  google()
+  mavenCentral()
+}
+
 
 // No buildscript{}, no repositories{}, no jcenter(), no AGP/Kotlin classpaths here.
 dependencies {
